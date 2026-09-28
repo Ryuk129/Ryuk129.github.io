@@ -55,11 +55,7 @@ li{margin:4px 0}
 <p class="lead">Plain-English, step-by-step help for students, job seekers, freelancers and small-business owners using free AI tools.</p>
 <button class="btn" onclick="go('cv')">Start with: Improve your CV with AI</button>
 <h2>Latest guides</h2>
-<div class="grid">
-<div class="card" onclick="go('cv')"><span class="tag">Jobs</span><h3>How to Use AI to Improve Your CV</h3><p>Five steps, one example, no fluff.</p></div>
-<div class="card" onclick="go('guides')"><span class="tag">Beginner</span><h3>How to Write Better Prompts</h3><p>Coming soon.</p></div>
-<div class="card" onclick="go('guides')"><span class="tag">Students</span><h3>10 Free AI Tools for Students</h3><p>Coming soon.</p></div>
-</div>
+<div class="grid" id="hl"></div>
 <h2>Popular free AI tools</h2>
 <div class="grid">
 <div class="card" onclick="go('tools')"><span class="tag">Writing</span><h3>Drafting &amp; editing</h3><p>Emails, essays, posts.</p></div>
@@ -71,35 +67,19 @@ li{margin:4px 0}
 <section id="tools">
 <h1>AI Tools</h1>
 <p class="lead">Honest, short write-ups of free tools, grouped by what you want to do.</p>
-<div class="grid">
-<div class="card"><span class="tag">Category</span><h3>Writing</h3><p>Guides coming soon</p></div>
-<div class="card"><span class="tag">Category</span><h3>Images</h3><p>Guides coming soon</p></div>
-<div class="card"><span class="tag">Category</span><h3>Video</h3><p>Guides coming soon</p></div>
-<div class="card"><span class="tag">Category</span><h3>Productivity</h3><p>Guides coming soon</p></div>
-<div class="card"><span class="tag">Category</span><h3>Education</h3><p>Guides coming soon</p></div>
-</div>
+<div class="grid" id="tl"></div>
 </section>
 
 <section id="guides">
 <h1>How-To Guides</h1>
 <p class="lead">Step-by-step tutorials and beginner guides.</p>
-<div class="grid">
-<div class="card" onclick="go('cv')"><span class="tag">Jobs · Published</span><h3>How to Use AI to Improve Your CV</h3></div>
-<div class="card"><span class="tag">Beginner</span><h3>What is AI? A Beginner's Guide</h3><p>Coming soon</p></div>
-<div class="card"><span class="tag">Beginner</span><h3>How to Use ChatGPT for Beginners</h3><p>Coming soon</p></div>
-<div class="card"><span class="tag">Students</span><h3>How to Make Revision Notes With AI</h3><p>Coming soon</p></div>
-</div>
+<div class="grid" id="gl"></div>
 </section>
 
 <section id="work">
 <h1>For Work</h1>
 <p class="lead">CVs, emails, marketing, freelancing and small business.</p>
-<div class="grid">
-<div class="card" onclick="go('cv')"><span class="tag">CVs</span><h3>Improve your CV with AI</h3></div>
-<div class="card"><span class="tag">Emails</span><h3>Write a professional email</h3><p>Coming soon</p></div>
-<div class="card"><span class="tag">Marketing</span><h3>Social media posts with AI</h3><p>Coming soon</p></div>
-<div class="card"><span class="tag">Small business</span><h3>Free AI tools that save time</h3><p>Coming soon</p></div>
-</div>
+<div class="grid" id="wl"></div>
 </section>
 
 <section id="about">
@@ -107,6 +87,8 @@ li{margin:4px 0}
 <p>AI Without The Fuss exists to help ordinary people use free AI tools to save time, without jargon or hype.</p>
 <p>Every guide is written to be genuinely useful, and any affiliate links will be clearly disclosed. <em>(Add your own name and story here.)</em></p>
 </section>
+
+<section id="art"></section>
 
 <section id="cv">
 <button class="back" onclick="go('guides')">← All guides</button>
@@ -139,9 +121,38 @@ li{margin:4px 0}
 <footer><div class="wrap">© AI Without The Fuss · Affiliate links, if any, will always be disclosed.</div></footer>
 
 <script>
+var A=[
+{c:"Beginner",t:"What is AI? A Beginner’s Guide",q:"AI is software that learns patterns from huge amounts of examples so it can write, sort or predict things. Chat tools are one kind.",s:["Think of it as a well-read assistant that guesses helpful answers.","Open a free chat tool and ask something you already know the answer to.","Notice where it is right, and where it is confidently wrong.","Use it for drafts and ideas, not as the final word."],e:"Ask: “Explain how a mortgage works in three sentences, for a beginner.”",m:"Assuming it is always correct, or that it understands like a person does.",f:["Is AI free to use?","Yes, most major tools have a free tier."]},
+{c:"Beginner",t:"How to Use ChatGPT for Beginners",q:"Type a clear request in plain English, read the answer, then reply to refine it. It works like a conversation.",s:["Sign up for a free account.","Say what you want and who it is for.","Reply with changes: “shorter”, “simpler”, “more formal”.","Check facts before you rely on them."],e:"“Write a friendly email asking my landlord to fix the heating. Keep it under 100 words.”",m:"Giving one vague sentence and expecting a perfect result.",f:["Do I need to be technical?","No. If you can write a text message, you can use it."]},
+{c:"Beginner",t:"10 Things You Can Do With AI for Free",q:"Free AI tools can draft, summarise, explain, plan, brainstorm and more, with no payment needed.",s:["Draft emails and messages.","Summarise long articles.","Explain hard topics simply.","Plan meals, trips and study timetables.","Brainstorm names and ideas.","Proofread your writing.","Turn notes into bullet points.","Practise interview questions.","Rewrite text in a different tone.","Create checklists for any task."],e:"“Turn these rough notes into a tidy checklist: …”",m:"Pasting private or sensitive details into any tool.",f:["Are free tiers limited?","Often yes, with daily message limits. That is fine to start."]},
+{c:"Beginner",t:"How to Write Better Prompts",q:"Good prompts state the task, the context, the audience and the format you want.",s:["Say the task clearly.","Add context: who you are and what it is for.","Name the format: list, table, email, 100 words.","Ask it to ask you questions if it needs more detail."],e:"Weak: “Help with my CV.” Better: “Rewrite my bar-work experience as 4 bullet points for a retail job application.”",m:"Being vague, or giving no example of what good looks like.",f:["Is there a perfect prompt?","No. Iterating on the answer beats hunting for a magic phrase."]},
+{c:"Beginner",t:"50 Useful AI Prompts for Everyday Life",q:"Copy these starter prompts and swap in your own details: they cover writing, learning, planning and decisions.",s:["Writing: “Make this message politer: …”","Learning: “Explain … like I’m 12, then give me 3 quiz questions.”","Planning: “Make a 7-day dinner plan for £30, no fish.”","Decisions: “List pros and cons of …, then ask me 3 questions.”","Life admin: “Draft a complaint letter about …, firm but polite.”"],e:"Build your own set: save the five prompts you reuse most in a notes app.",m:"Copying prompts without adding your personal context.",f:["Where are the other 45?","Expand each category above into ten variations for your own life."]},
+{c:"Students",t:"10 Free AI Tools for Students",q:"Start with one free chat assistant, then add tools for notes, flashcards, grammar and planning as you need them.",s:["Chat assistant: explanations and practice questions.","Note tools: summarise lecture notes.","Flashcard apps: turn notes into cards.","Grammar checkers: proofread essays.","Calendar and planner apps: schedule revision.","Reference managers: keep sources tidy.","Translation tools: read foreign-language papers.","Mind-map tools: organise topics.","Focus timers: study in blocks.","Your university library: check what it already provides."],e:"Pick one tool per problem rather than ten tools at once.",m:"Collecting tools instead of using one properly.",f:["Are these all free?","Check each tool’s current free tier, as plans change."]},
+{c:"Students",t:"How to Use AI to Understand Difficult Topics",q:"Ask for a simple explanation, then an example, then test yourself.",s:["Ask: “Explain … simply.”","Ask for an analogy or real-life example.","Ask it to quiz you on what it explained.","Check the answer against your textbook."],e:"“Explain photosynthesis simply, then ask me three questions.”",m:"Trusting an explanation without checking your course material.",f:["What if it is wrong?","Compare with your notes or ask your tutor."]},
+{c:"Students",t:"How to Make Revision Notes With AI",q:"Paste your own notes and ask for a condensed summary and key terms, then check it.",s:["Paste one topic at a time.","Ask for headings, bullet points and key terms.","Ask for 5 practice questions.","Correct anything that does not match your course."],e:"“Condense these notes into one page with key terms in bold.”",m:"Summarising material you have not read.",f:["Can it replace reading?","No. It helps you review, not learn from nothing."]},
+{c:"Students",t:"How to Create a Study Plan With AI",q:"Tell the tool your exam dates, subjects and free hours, and ask for a weekly timetable.",s:["List subjects, exam dates and how confident you feel.","State the hours you can study each day.","Ask for a weekly plan with breaks.","Adjust it after the first week."],e:"“I have 3 exams in 6 weeks and 2 hours per weekday. Make a timetable.”",m:"An unrealistic plan with no rest days.",f:["How often should I update it?","Weekly, based on what you actually completed."]},
+{c:"Students",t:"How to Use AI Without Letting It Do Your Work for You",q:"Use AI to understand, plan and check, not to write what you submit. Follow your institution’s rules.",s:["Read your course’s AI policy first.","Use it to explain and to give feedback on your own drafts.","Write the work yourself.","Keep notes of how you used it."],e:"“Give feedback on my paragraph. Do not rewrite it.”",m:"Submitting AI-written text as your own.",f:["Is using AI cheating?","It depends on your institution’s policy, so check it."]},
+{c:"Jobs",t:"How to Use AI to Improve Your CV",cv:1},
+{c:"Jobs",t:"AI Prompts for Job Applications",q:"Prompts work best when you provide the job advert and your real experience.",s:["Paste the advert and your CV.","Ask: “Which of my skills match this role?”","Ask for a cover letter draft using only true facts.","Edit it into your own voice."],e:"“Write a 200-word cover letter for this role using only the experience I pasted.”",m:"Sending generic letters to every employer.",f:["Should I mention AI?","Only if the employer asks. Always make sure the content is yours and true."]},
+{c:"Jobs",t:"How to Prepare for an Interview With AI",q:"Have the AI act as an interviewer, then review your answers.",s:["Give it the job advert.","Ask for likely interview questions.","Answer aloud or in writing, one at a time.","Ask for feedback and a stronger version."],e:"“Act as an interviewer for this role. Ask one question at a time.”",m:"Memorising AI answers instead of using your real stories.",f:["Does it know the company?","Not reliably. Research the employer yourself."]},
+{c:"Jobs",t:"How to Write a Professional Email With AI",q:"State the purpose, the recipient and the tone, then edit the draft.",s:["Say who it is for and what you need.","Choose a tone: formal, friendly, firm.","Ask for a short draft with a clear subject line.","Read it aloud and fix anything that does not sound like you."],e:"“Write a polite email asking my manager for a day off on 12 May. Under 80 words.”",m:"Sending without checking names, dates and facts.",f:["Can it fix my tone?","Yes: paste your draft and ask for a friendlier or more formal version."]},
+{c:"Jobs",t:"Free AI Tools for Job Seekers",q:"A free chat assistant, a grammar checker and a job-alert service cover most needs.",s:["Chat assistant: CV and cover-letter feedback.","Grammar checker: catch typos.","Job-alert emails: save searches.","Notes app: track applications."],e:"Keep a simple table: company, date applied, next step.",m:"Applying to everything instead of tailoring a few.",f:["Do I need paid tools?","Not to start."]},
+{c:"Business",t:"10 Free AI Tools for Small Businesses",q:"Cover writing, design, scheduling, customer replies and bookkeeping basics with free tiers first.",s:["Chat assistant: copy and emails.","Free design tools: social graphics.","Scheduling tools: post in advance.","Meeting note tools: summaries.","Spreadsheet formulas: ask AI to write them.","Translation tools: reach new customers.","Email templates: repeat replies.","Review-reply drafts.","FAQ drafting for your website.","Checklists for daily jobs."],e:"Pick the one task that costs you most time and start there.",m:"Automating tasks you have not yet mastered by hand.",f:["Are these free forever?","Tiers change, so check current limits."]},
+{c:"Business",t:"How to Use AI to Write Social Media Posts",q:"Give AI your product, audience and tone, then edit posts to sound like your brand.",s:["Describe your business and customer.","Ask for 5 post ideas.","Draft one post per idea, then edit.","Schedule and note what performs."],e:"“Write 3 friendly Instagram captions for a bakery’s new sourdough loaf.”",m:"Posting AI text unedited.",f:["How often should I post?","Consistency matters more than volume."]},
+{c:"Business",t:"How to Create a Business Plan With AI",q:"Use AI to structure the plan and challenge assumptions, but supply the real numbers yourself.",s:["List what you sell, to whom, and why.","Ask for a standard business-plan outline.","Fill each section with your own facts.","Ask AI to poke holes in it."],e:"“Ask me 10 questions a bank would ask about my café plan.”",m:"Trusting invented market figures.",f:["Is an AI plan enough for a loan?","Have a professional or adviser review it."]},
+{c:"Business",t:"How to Use AI for Customer Emails",q:"Create reusable templates for common questions and personalise before sending.",s:["List your five most common enquiries.","Ask AI for a friendly template for each.","Save them and add customer details.","Never send anything you have not read."],e:"“Write a polite reply to a customer whose order is late. Offer a discount code.”",m:"Promising refunds or dates you cannot keep.",f:["Can it handle complaints?","It can draft, but you should decide the resolution."]},
+{c:"Business",t:"Free AI Tools That Can Save a Small Business Time",q:"Focus on the repetitive jobs: emails, posts, summaries and admin.",s:["Time a week to see where hours go.","Choose one repetitive task.","Test one free tool on it for two weeks.","Keep it only if it saves real time."],e:"Track before and after: “Emails took 5 hours, now 3.”",m:"Adopting many tools at once.",f:["Where do I start?","With whatever eats most of your week."]}
+];
+function card(i){var a=A[i];return '<div class="card" onclick="op('+i+')"><span class="tag">'+a.c+'</span><h3>'+a.t+'</h3></div>'}
+function fill(id,idx){document.getElementById(id).innerHTML=idx.map(card).join('')}
+function op(i){var a=A[i];if(a.cv){return go('cv')}var h='<button class="back" onclick="go(\'guides\')">← All guides</button><span class="tag">'+a.c+'</span><h1>'+a.t+'</h1><div class="box"><strong>Quick answer:</strong> '+a.q+'</div><h2>Steps</h2><ol>'+a.s.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ol><h2>Example</h2><p>'+a.e+'</p><h2>Common mistakes</h2><p>'+a.m+'</p><h2>Free alternatives</h2><p>Any free AI chat assistant works. Try a couple and keep the one you like.</p><h2>FAQ</h2><p><strong>'+a.f[0]+'</strong> '+a.f[1]+'</p>';document.getElementById('art').innerHTML=h;go('art')}
+var all=A.map(function(_,i){return i});
+fill('hl',[9,3,5,0,15,1]);fill('gl',all);
+fill('wl',all.filter(function(i){return A[i].c==='Jobs'||A[i].c==='Business'}));
+fill('tl',[2,5,14,15,19]);
 function go(id){
   document.querySelectorAll('section').forEach(function(s){s.classList.toggle('on',s.id===id)});
-  var navId=id==='cv'?'guides':id;
+  var navId=(id==='cv'||id==='art')?'guides':id;
   document.querySelectorAll('nav button').forEach(function(b){b.classList.toggle('on',b.dataset.p===navId)});
   window.scrollTo(0,0);
 }
